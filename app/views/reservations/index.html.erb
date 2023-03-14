@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Reservations</h1>
+
+<div id="reservations">
+
+  <table>
+    <thead>
+    <tr>
+      <th>Party Name</th>
+      <th>Date & Time</th>
+      <th>Party Size</th>
+      <th>Table Number</th>
+    </tr>
+    </thead>
+    <% @reservations.each do |reservation| %>
+      <tbody>
+      <tr>
+        <td><%= reservation.name %></td>
+        <td><%= reservation.date %></td>
+        <td><%= reservation.party_size %></td>
+        <td><%= reservation.table.id %></td>
+      </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+  <%# @reservations.each do |reservation| %>
+    <%#= render reservation %>
+<!--    <p>-->
+      <%#= link_to "Show this reservation", reservation %>
+<!--    </p>-->
+  <%# end %>
+</div>
+
+<%= link_to "New reservation", new_reservation_path %>

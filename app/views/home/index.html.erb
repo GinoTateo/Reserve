@@ -1,0 +1,60 @@
+
+<div style="margin: 15px" class="grid-x align-center margin-3">
+  <div style="width: 50vw" class="callout">
+    <h5>Upcoming Reservations</h5>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Party Name</th>
+          <th>Date & Time</th>
+          <th>Party Size</th>
+          <th>Table Number</th>
+        </tr>
+      </thead>
+      <% @reservations.each do |reservation| %>
+        <tbody>
+          <tr>
+            <td><%= reservation.name %></td>
+            <td><%= reservation.date %></td>
+            <td><%= reservation.party_size %></td>
+            <td><%= reservation.table.id %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+
+    <%= link_to "View more", Reservation %>
+  </div>
+
+  <div style="width: 50vw" class="callout">
+    <h5>Create New</h5>
+    <p style="color: red"><%= notice %></p>
+    <%= form_with model: Reservation.new do |form| %>
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="medium-6 cell">
+
+              <%= form.label :party_name, style: "display: block" %>
+              <%= form.text_field :name %>
+
+          </div>
+          <div class="medium-6 cell">
+
+              <%= form.label :date, style: "display: block" %>
+              <%= form.datetime_field :date %>
+
+          </div>
+          <div class="medium-6 cell">
+
+            <%= form.label :party_size, style: "display: block" %>
+            <%= form.number_field :party_size %>
+
+          </div>
+        </div>
+      </div>
+    <%= form.submit "Submit", class: "button" %>
+    <% end %>
+
+  </div>
+</div>
